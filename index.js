@@ -15,7 +15,6 @@ page = JSON.parse(xhr.responseText);
 
 function testo(page) {
 	let msg = page.oggetto.toUpperCase() + ' (dal ' + page.dataPubblicazione.slice(0, 10) +' al ' + page.valido_per + ')' + '\n\n';
-	msg += page.statoNeveInBreve;
 	return msg;
 }
 
@@ -54,6 +53,7 @@ try {
         keyboardZone[0][i] = {text: page.aree[i]['microzone:']}
         }
         reply.keyboard(keyboardZone, true).photo(page.mappaGeneraleGiorno, testo(page));
+        reply.text(page.statoNeveInBreve);
         reply.text(page.statoNeveEsteso);
         reply.text("Scegli la zona");
     }
